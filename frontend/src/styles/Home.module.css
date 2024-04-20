@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .main iframe {
+    border: none;
+  }
+  
+  .main div {
+    padding: 10px;
+  }
+  
+  .main input {
+    width: 80%;
+  }
+  
+  .main button {
+    margin-bottom: 10px;
+  }
