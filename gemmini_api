@@ -33,3 +33,29 @@ Examples for voice or video
 
 https://github.com/google-gemini/cookbook/tree/main/quickstarts/file-api
 
+
+
+Multi-trun api
+
+
+model = genai.GenerativeModel('gemini-pro')
+
+
+messages = [
+    {'role':'user',
+     'parts': ["Briefly explain how a computer works to a young child."]}
+]
+response = model.generate_content(messages)
+
+to_markdown(response.text)
+
+messages.append({'role':'model',
+                 'parts':[response.text]})
+
+messages.append({'role':'user',
+                 'parts':["Okay, how about a more detailed explanation to a high school student?"]})
+
+response = model.generate_content(messages)
+
+to_markdown(response.text)
+
