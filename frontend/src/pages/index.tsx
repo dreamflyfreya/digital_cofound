@@ -40,6 +40,7 @@ function App() {
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
       }
 
+      // Please replace it to the GeminiAPI endpoint.
       const response = await axios.post(
         'https://api.openai.com/v1/images/generations',
         requestData,
@@ -87,36 +88,6 @@ function App() {
       )}
 
 
-      <button
-        onClick={generateImages}
-        disabled={isLoading}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        {isLoading ? 'Generating...' : 'Generate Images'}
-      </button>
-
-      {allGeneratedImages.length > 0 && showResult && 'Full Story'}
-      {allGeneratedImages.length > 0 && showResult && (
-        <div className="mt-4">
-          {allGeneratedImages.map((image, index) => (
-            <div key={index} className="mt-4">
-              <img
-                src={image.url}
-                alt={`Generated Image ${index}`}
-                style={{ maxWidth: '90%', height: 'auto', maxHeight: '50%' }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-
-      <button
-        onClick={changeShowResult}
-        disabled={isLoading}
-        className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-      >
-        {'Show Full Story'}
-      </button>
 
 
       <MessagesProvider>

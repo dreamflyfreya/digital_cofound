@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@apideck/components": "^0.12.16",
+    "axios": "^1.6.8",
     "next": "^14.0.0",
     "openai": "^4.24.7",
     "react": "^18.2.0",
