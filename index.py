@@ -17,7 +17,7 @@ import uvicorn
 # response = model.generate_content("What is the meaning of life?")
 
 # messages = []
-GOOGLE_API_KEY = "AIzaSyBZ2WWXCEGU5S1bT9PUMQXdoE2rfDL0I8A"
+
 genai.configure(api_key=GOOGLE_API_KEY)
 
 
