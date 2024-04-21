@@ -20,52 +20,53 @@ import uvicorn
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
+create_cofounder_response = "You are a 60 seconds pitch deck developer that generate pitch for Storetail.AI, \
+    it builds chatbots and knowledge base for companies, you would like to \
+        generate pitch deck for this product."
 
 @app.post('/api/create_cofounder')
 def create_cofounder(request: Request):
-    introduction = "Henry is starting a company called HenryAI and needs cofounder\n"
-    with open("r", "company_profile.txt") as f:
-        company_profile = f"the profile of HenryAI is {f.open()} \n"
-        f.close()
-    with open("r", "cofounder_team.txt") as f:
-        founder_team = f"the best cofounder team is {f.open()} \n"
-        f.close()
-    model = genai.GenerativeModel(
-        'models/gemini-1.5-pro-latest',
-        system_instruction=[
-            introduction,
-            company_profile,
-            founder_team,
-            "can you create a profile"
-        ],
-    )
+    # introduction = "Henry is starting a company called HenryAI and needs cofounder\n"
+    # with open("r", "company_profile.txt") as f:
+    #     company_profile = f"the profile of HenryAI is {f.open()} \n"
+    #     f.close()
+    # with open("r", "cofounder_team.txt") as f:
+    #     founder_team = f"the best cofounder team is {f.open()} \n"
+    #     f.close()
+    # model = genai.GenerativeModel(
+    #     'models/gemini-1.5-pro-latest',
+    #     system_instruction=[
+    #         introduction,
+    #         company_profile,
+    #         founder_team,
+    #         "can you create a profile"
+    #     ],
+    # )
 
-    # send api and prompts
-    # Set model parameters
-    response = model.generate_content("Can you generate a profile for ")
+    # # send api and prompts
+    # # Set model parameters
+    # response = model.generate_content("Can you generate a profile for ")
     
-    with open("wr", "profile.txt") as f:
-        f.write(response.text)
-    return response.text
+    with open("profile.txt", "w") as f:
+        f.write(create_cofounder_response)
+    return create_cofounder_response.text
 
 @app.post('/api/do_task')
 def do_task(request: Request):
     body = request.json()
-    introduction = "you are a cofounder of a company \n"
-    with open("r", "profile.txt") as f:
+    introduction = "you are a cofounder of a company for Storetail.AI\n \
+        "
+    with open("profile.txt", "r") as f:
         cofounder_profile = f"your profile is {f.read()} \n"
-    with open("r", "knowledge_base.txt") as f:
-        knowledge_base_profile = f"your knowledge base is {f.read()} \n"
     model = genai.GenerativeModel(
         'models/gemini-1.5-pro-latest',
         system_instruction=[
             introduction,
             cofounder_profile,
-            knowledge_base_profile,
         ],
     )
 
-    response = model.generate_content("Please generate a task")
+    response = model.generate_content("Please do the task as instructed")
 
     return response.text
 
