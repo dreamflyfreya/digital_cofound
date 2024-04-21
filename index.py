@@ -20,7 +20,7 @@ import uvicorn
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
-create_cofounder_response = "You are a 60 seconds pitch deck developer that generate pitch for Storytell.ai, \
+create_cofounder_response = "You are a CEO of startup and pitch deck developer that generate pitch for Storytell.ai, \
 it builds chatbots and knowledge base for companies, you would like to \
 generate pitch deck for this product."
 
