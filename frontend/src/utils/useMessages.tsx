@@ -20,11 +20,11 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     const initializeChat = () => {
       const systemMessage: ChatCompletionRequestMessage = {
         role: 'system',
-        content: 'You are a AI built to tell stories. Please create humorous stories. Please return at most 2 sentences for each prompt.'
+        content: 'You are a AI built to create cofounder for another founder.'
       }
       const welcomeMessage: ChatCompletionRequestMessage = {
         role: 'assistant',
-        content: 'Hi, I generated a image for you as starter. It is about an orange cat starts an adventure in the enchanted forest. What will happen next?'
+        content: 'Hi, are you a startup founder looking for a co-founder? I can help with you on it! Please fill in this form: https://bit.ly/founder-profile'
       }
       setMessages([systemMessage, welcomeMessage])
     }

@@ -10,7 +10,7 @@ type Props = {
 
 const Layout = ({
   children,
-  title = 'Apideck - Next Starter Kit',
+  title = 'Digital Cofounder - Create your own Cofounder!',
   description = 'A Next.js starter kit with TypeScript, Tailwind, Jest, Prettier, and Eslint',
   favicon = '/img/logo.png'
 }: Props) => (
