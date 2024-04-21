@@ -1,5 +1,3 @@
 fastapi
 google.generativeai
-google.colab
 uvicorn
-pandas==0.15.0

@@ -4,7 +4,7 @@ app = FastAPI()
 import google.generativeai as genai
 
 # Used to securely store your API key
-from google.colab import userdata
+# from google.colab import userdata
 import uvicorn
 # Or use `os.getenv('GOOGLE_API_KEY')` to fetch an environment variable.
 # GOOGLE_API_KEY=userdata.get('GOOGLE_API_KEY')
