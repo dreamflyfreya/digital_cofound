@@ -20,9 +20,9 @@ import uvicorn
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
-create_cofounder_response = "You are a 60 seconds pitch deck developer that generate pitch for Storetail.AI, \
-    it builds chatbots and knowledge base for companies, you would like to \
-        generate pitch deck for this product."
+create_cofounder_response = "You are a 60 seconds pitch deck developer that generate pitch for Storytell.ai, \
+it builds chatbots and knowledge base for companies, you would like to \
+generate pitch deck for this product."
 
 @app.post('/api/create_cofounder')
 def create_cofounder(request: Request):
@@ -49,12 +49,12 @@ def create_cofounder(request: Request):
     
     with open("profile.txt", "w") as f:
         f.write(create_cofounder_response)
-    return create_cofounder_response.text
+    return create_cofounder_response
 
 @app.post('/api/do_task')
 def do_task(request: Request):
     body = request.json()
-    introduction = "you are a cofounder of a company for Storetail.AI\n \
+    introduction = "you are a cofounder of a company for Storytell.AI\n \
         "
     with open("profile.txt", "r") as f:
         cofounder_profile = f"your profile is {f.read()} \n"
