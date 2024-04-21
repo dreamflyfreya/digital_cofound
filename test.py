@@ -47,7 +47,7 @@ def create_cofounder(request: Request):
     # # Set model parameters
     # response = model.generate_content("Can you generate a profile for ")
     
-    with open("wr", "profile.txt") as f:
+    with open("profile.txt", "w") as f:
         f.write(create_cofounder_response)
     return create_cofounder_response.text
 
@@ -56,7 +56,7 @@ def do_task(request: Request):
     body = request.json()
     introduction = "you are a cofounder of a company for Storetail.AI\n \
         "
-    with open("r", "profile.txt") as f:
+    with open("profile.txt", "r") as f:
         cofounder_profile = f"your profile is {f.read()} \n"
     model = genai.GenerativeModel(
         'models/gemini-1.5-pro-latest',
@@ -66,7 +66,7 @@ def do_task(request: Request):
         ],
     )
 
-    response = model.generate_content("Please do a task")
+    response = model.generate_content("Please do the task as instructed")
 
     return response.text
 
