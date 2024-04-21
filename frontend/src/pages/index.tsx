@@ -18,16 +18,12 @@ function App() {
     setShowResult(true)
   }
 
-  async function generateImages(imagePrompt: string) {
+  async function generateResponse(prompt: string) {
     setIsLoading(true)
-
-    var usedImagePrompt = imagePrompt || prompt
-    usedImagePrompt = usedImagePrompt + '. Please use cartoon style for the image.'
-    console.log('usedImagePrompt: ', usedImagePrompt)
 
     try {
       const requestData = {
-        prompt: usedImagePrompt,
+        prompt: prompt,
         n: 1,
         size: '512x512' // Set the desired image size here
       }
@@ -41,16 +37,25 @@ function App() {
       }
 
       // Please replace it to the GeminiAPI endpoint.
-      const response = await axios.post(
-        'https://api.openai.com/v1/images/generations',
-        requestData,
-        {
-          headers: headers
-        }
-      )
+      if (prompt.includes('Please create a cofounder')) {
+        
+      }
+      //const response = await axios.post(
+      //  'https://api.openai.com/v1/images/generations',
+      //  requestData,
+      //  {
+      //    headers: headers
+      //  }
+      //)
 
-      setGeneratedImages(response.data.data)
-      setAllGeneratedImages([...allGeneratedImages, ...response.data.data])
+      //const response = await axios.post(
+      //  'https://api.openai.com/v1/images/generations',
+      //  requestData,
+      //  {
+      //    headers: headers
+      //  }
+      //)
+
     } catch (error) {
       console.error('Error generating images:', error)
     } finally {
@@ -61,7 +66,7 @@ function App() {
   useEffect(() => {
     console.log('I Only run once (When the component gets mounted)')
     const timer = setTimeout(() => {
-      generateImages('')
+      generateResponse('')
       console.log('This runs 1 second after the component is rendered')
     }, 1000) // 1000 milliseconds = 1 second
 
@@ -72,27 +77,13 @@ function App() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
 
-      {isLoading && <p className="mt-4 text-gray-600">Loading...</p>}
-      {generatedImages.length > 0 && !showResult && (
-        <div className="mt-4">
-          {generatedImages.map((image, index) => (
-            <div key={index} className="mt-4">
-              <img
-                src={image.url}
-                alt={`Generated Image ${index}`}
-                style={{ maxWidth: '90%', height: 'auto', maxHeight: '50%' }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
 
       <MessagesProvider>
           <div>
           <MessagesList />
           </div>
           <div className="fixed top-0 right-0 left-0">
-            <MessageForm onSubmit={generateImages} />
+            <MessageForm onSubmit={generateResponse} />
           </div>
       </MessagesProvider>
     </div>
