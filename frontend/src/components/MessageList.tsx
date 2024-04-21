@@ -7,6 +7,7 @@ const MessagesList = () => {
     <div className="max-w-3xl mx-auto pt-8" style={{ maxHeight: '45px' }}>
       {messages?.map((message, i) => {
         const isUser = message.role === 'user'
+        const isCofounder = message.role === 'cofounder'
         if (message.role === 'system') return null
         return (
           <div
@@ -16,13 +17,23 @@ const MessagesList = () => {
             }`}
             key={message.content}
           >
-            {!isUser && (
+            {(!isUser && !isCofounder)&& (
               <img
                 src="https://www.teamsmart.ai/next-assets/team/ai.jpg"
+                // src="https://myva360.com/wp-content/uploads/2020/04/Mesa-de-trabajo-1.png.webp"
                 className="w-9 h-9 rounded-full"
                 alt="avatar"
               />
             )}
+            {isCofounder && (
+              <img
+                // src="https://www.teamsmart.ai/next-assets/team/ai.jpg"
+                src="https://myva360.com/wp-content/uploads/2020/04/Mesa-de-trabajo-1.png.webp"
+                className="w-9 h-9 rounded-full"
+                alt="avatar"
+              />
+            )}
+
             <div
               style={{ maxWidth: 'calc(100% - 45px)' }}
               className={`group relative px-3 py-2 rounded-lg ${
@@ -40,6 +51,7 @@ const MessagesList = () => {
                 alt="avatar"
               />
             )}
+
           </div>
         )
       })}

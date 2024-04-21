@@ -7,7 +7,7 @@ export default async function createMessage(req: NextApiRequest, res: NextApiRes
 
   console.log('messages: ' + messages[-1])
   var lastMessage = messages[messages.length - 1]['content']
-  if (lastMessage.includes('cofounder')) {
+  if (lastMessage.includes('finish')) {
     const url = 'http://localhost:61001/api/create_cofounder'
 
     //const body = JSON.stringify({
@@ -27,8 +27,8 @@ export default async function createMessage(req: NextApiRequest, res: NextApiRes
         body
       })
       // const data = await response.json()
-      const content = await response.json()
-      // var content = "The 2020 World Series was played in Texas at Globe Life Field in Arlington."
+      const content0 = await response.json()
+      var content = "We have created a co-founder [Tom] for you! \n"
       var data = {
         choices: [
           {
@@ -85,7 +85,7 @@ export default async function createMessage(req: NextApiRequest, res: NextApiRes
             index: 0,
             message: {
               content: content,
-              role: 'assistant'
+              role: 'cofounder'
             },
             logprobs: null
           }
