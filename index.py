@@ -20,12 +20,6 @@ import uvicorn
 GOOGLE_API_KEY = "AIzaSyBZ2WWXCEGU5S1bT9PUMQXdoE2rfDL0I8A"
 genai.configure(api_key=GOOGLE_API_KEY)
 
-def fetch_response(messages):
-    genai.configure(api_key=GOOGLE_API_KEY)
-
-    model = genai.GenerativeModel('gemini-pro')
-
-    response = model.generate_content(messages)
 
 @app.post('/api/create_cofounder')
 def create_cofounder(request: Request):
@@ -48,14 +42,6 @@ def create_cofounder(request: Request):
 
     # send api and prompts
     # Set model parameters
-    generation_config = genai.GenerationConfig(
-        temperature=0.9,
-        top_p=1.0,
-        top_k=32,
-        candidate_count=1,
-        max_output_tokens=8192,
-    )
-
     response = model.generate_content("Can you generate a profile for ")
     
     with open("wr", "profile.txt") as f:
